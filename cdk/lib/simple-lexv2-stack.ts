@@ -6,7 +6,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as idPool from '@aws-cdk/aws-cognito-identitypool-alpha';
 import * as kendra from 'aws-cdk-lib/aws-kendra';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import * as waf from 'aws-cdk-lib/aws-wafv2';
+// import * as waf from 'aws-cdk-lib/aws-wafv2';
 import { GeoRestriction } from 'aws-cdk-lib/aws-cloudfront';
 import { NodejsBuild } from 'deploy-time-build';
 import { CloudFrontToS3 } from '@aws-solutions-constructs/aws-cloudfront-s3';
@@ -17,7 +17,7 @@ export interface SimpleLexV2StackProps extends cdk.StackProps {
   kendraIndex: kendra.CfnIndex;
   latestBotVersion: number;
   autoIncrementBotVersion: boolean;
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
 }
 
 export class SimpleLexV2Stack extends cdk.Stack {
@@ -306,7 +306,7 @@ export class SimpleLexV2Stack extends cdk.Stack {
         },
         cloudFrontDistributionProps: {
           geoRestriction: GeoRestriction.allowlist('JP'),
-          webAclId: props.webAclCloudFront.attrArn,
+          // webAclId: props.webAclCloudFront.attrArn,
         },
       }
     );

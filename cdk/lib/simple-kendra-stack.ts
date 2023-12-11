@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as kendra from 'aws-cdk-lib/aws-kendra';
-import * as waf from 'aws-cdk-lib/aws-wafv2';
+// import * as waf from 'aws-cdk-lib/aws-wafv2';
 import {
   KendraIndex,
   Auth,
@@ -15,7 +15,7 @@ import {
 import { NagSuppressions } from 'cdk-nag';
 
 export interface SimpleKendraStackProps extends cdk.StackProps {
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
 }
 
 export class SimpleKendraStack extends cdk.Stack {
@@ -57,7 +57,7 @@ export class SimpleKendraStack extends cdk.Stack {
     const web = new Web(this, 'Web', {
       userPool: auth.userPool,
       userPoolClient: auth.userPoolClient,
-      webAclCloudFront: props.webAclCloudFront,
+      // webAclCloudFront: props.webAclCloudFront,
       api: api.api,
       identityPool: identity.identityPool,
       predictStreamFunction: api.predictStreamFunction,

@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import * as cognito from 'aws-cdk-lib/aws-cognito';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
-import * as waf from 'aws-cdk-lib/aws-wafv2';
+// import * as waf from 'aws-cdk-lib/aws-wafv2';
 import * as agw from 'aws-cdk-lib/aws-apigateway';
 import * as idPool from '@aws-cdk/aws-cognito-identitypool-alpha';
 import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
@@ -14,7 +14,7 @@ export interface WebProps {
   userPool: cognito.UserPool;
   userPoolClient: cognito.UserPoolClient;
   identityPool: idPool.IdentityPool;
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
   api: agw.RestApi;
   predictStreamFunction: lambda.NodejsFunction;
 }
@@ -55,7 +55,7 @@ export class Web extends Construct {
         },
         cloudFrontDistributionProps: {
           geoRestriction: cloudfront.GeoRestriction.allowlist('JP'),
-          webAclId: props.webAclCloudFront.attrArn,
+          // webAclId: props.webAclCloudFront.attrArn,
         },
       }
     );

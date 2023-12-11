@@ -3,7 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { SimpleKendraStack } from '../lib/simple-kendra-stack';
 import { SimpleLexV2Stack } from '../lib/simple-lexv2-stack';
-import { WebAclStack } from '../lib/web-acl-stack';
+// import { WebAclStack } from '../lib/web-acl-stack';
 import {
   CloudFormationClient,
   DescribeStacksCommand,
@@ -41,33 +41,33 @@ const app = new cdk.App();
 Aspects.of(app).add(new AwsSolutionsChecks());
 
 (async () => {
-  const webAclStack = new WebAclStack(app, 'webAcl', {
-    crossRegionReferences: true,
-    env: {
-      region: 'us-east-1',
-    },
-  });
+  // const webAclStack = new WebAclStack(app, 'webAcl', {
+  //   crossRegionReferences: true,
+  //   env: {
+  //     region: 'us-east-1',
+  //   },
+  // });
 
   const kendraStack = new SimpleKendraStack(app, 'SimpleKendraStack', {
-    webAclCloudFront: webAclStack.webAcl,
+    // webAclCloudFront: webAclStack.webAcl,
     crossRegionReferences: true,
     env: {
       region: 'ap-northeast-1',
     },
   });
 
-  kendraStack.addDependency(webAclStack);
+  // kendraStack.addDependency(webAclStack);
 
   const lexStack = new SimpleLexV2Stack(app, 'SimpleLexV2Stack', {
     kendraIndex: kendraStack.index,
     latestBotVersion: await fetchLatestBotVersion(),
     autoIncrementBotVersion: true,
-    webAclCloudFront: webAclStack.webAcl,
+    // webAclCloudFront: webAclStack.webAcl,
     crossRegionReferences: true,
     env: {
       region: 'ap-northeast-1',
     },
   });
 
-  lexStack.addDependency(webAclStack);
+  // lexStack.addDependency(webAclStack);
 })();
