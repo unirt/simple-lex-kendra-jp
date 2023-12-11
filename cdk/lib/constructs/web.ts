@@ -14,7 +14,7 @@ export interface WebProps {
   userPool: cognito.UserPool;
   userPoolClient: cognito.UserPoolClient;
   identityPool: idPool.IdentityPool;
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
   api: agw.RestApi;
   predictStreamFunction: lambda.NodejsFunction;
   selfSignUpEnabled: boolean;
@@ -56,7 +56,7 @@ export class Web extends Construct {
         },
         cloudFrontDistributionProps: {
           geoRestriction: cloudfront.GeoRestriction.allowlist('JP'),
-          webAclId: props.webAclCloudFront.attrArn,
+          // webAclId: props.webAclCloudFront.attrArn,
         },
       }
     );

@@ -17,7 +17,7 @@ export interface SimpleLexV2StackProps extends cdk.StackProps {
   kendraIndex: kendra.CfnIndex;
   latestBotVersion: number;
   autoIncrementBotVersion: boolean;
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
 }
 
 export class SimpleLexV2Stack extends cdk.Stack {
@@ -306,7 +306,7 @@ export class SimpleLexV2Stack extends cdk.Stack {
         },
         cloudFrontDistributionProps: {
           geoRestriction: GeoRestriction.allowlist('JP'),
-          webAclId: props.webAclCloudFront.attrArn,
+          // webAclId: props.webAclCloudFront.attrArn,
         },
       }
     );

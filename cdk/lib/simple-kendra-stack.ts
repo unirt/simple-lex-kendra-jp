@@ -15,7 +15,7 @@ import {
 import { NagSuppressions } from 'cdk-nag';
 
 export interface SimpleKendraStackProps extends cdk.StackProps {
-  webAclCloudFront: waf.CfnWebACL;
+  // webAclCloudFront: waf.CfnWebACL;
 }
 
 export class SimpleKendraStack extends cdk.Stack {
@@ -66,7 +66,7 @@ export class SimpleKendraStack extends cdk.Stack {
     const web = new Web(this, 'Web', {
       userPool: auth.userPool,
       userPoolClient: auth.userPoolClient,
-      webAclCloudFront: props.webAclCloudFront,
+      // webAclCloudFront: props.webAclCloudFront,
       api: api.api,
       identityPool: identity.identityPool,
       predictStreamFunction: api.predictStreamFunction,
